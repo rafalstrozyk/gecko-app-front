@@ -1,7 +1,10 @@
+import MainTemplate from 'template/mainTemplate';
+import Root from 'views/root';
+
 const App = () => (
-  <div>
-    <h1>Hello Word</h1>
-  </div>
+  <MainTemplate>
+    <Root />
+  </MainTemplate>
 );
 
 export default App;
