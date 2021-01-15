@@ -12,6 +12,7 @@ const GlobalStyle = createGlobalStyle`
        font-size:62.5%;
         display: block;
         font-family: 'Roboto', sans-serif;
+        background-color: #f6f6f6
     }
 
     h1 { 
