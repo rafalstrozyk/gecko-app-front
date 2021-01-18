@@ -6,7 +6,8 @@ const CustomList = ({ width, height, data }) => {
   const cache = useRef(
     new CellMeasurerCache({
       fixedWidth: true,
-      defaultHeight: 100,
+      minHeight: 48,
+      fixedHeight: true,
     }),
   );
 
@@ -31,9 +32,9 @@ const CustomList = ({ width, height, data }) => {
                     columnIndex={0}
                     rowIndex={index}
                   >
-                    <div style={style}>
-                      <ListItem data={item} />
-                    </div>
+                    
+                      <ListItem style={style} data={item} />
+                    
                   </CellMeasurer>
                 );
               }}
