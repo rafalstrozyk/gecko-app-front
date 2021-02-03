@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Typography } from '@material-ui/core';
+import { connect } from 'react-redux';
 
-import { data } from 'data/data';
-import ListTest from 'components/lists/list';
+import List from 'components/lists/list';
 
 const StyledListSite = styled.div`
   max-width: 1200px;
@@ -18,17 +18,23 @@ const StyledListSite = styled.div`
   }
 `;
 
-const ListSite = () => {
+const ListSite = ({ data }) => {
   return (
     <StyledListSite>
       <Typography className="title" variant="h2">
         Crested Geckos List
       </Typography>
       <div className="container">
-        <ListTest width={'1000px'} height={'75vh'} data={data.data} />
+        <List width={'1200px'} height={'75vh'} data={data} />
       </div>
     </StyledListSite>
   );
 };
 
-export default ListSite;
+const mapStateToProps = (state) => {
+  return {
+    data: state.geckos.data,
+  };
+};
+
+export default connect(mapStateToProps)(ListSite);

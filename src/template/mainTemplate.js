@@ -1,16 +1,25 @@
+import React, { useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import Helmet from 'helmet';
 import Navbar from 'components/navbar';
+import { connect } from 'react-redux';
+import { getGeckos } from 'redux/actions/gecko';
 
-const MainTemplate = ({ children }) => (
-  <div>
-    <Helmet />
+const MainTemplate = ({ children, getGeckos }) => {
 
-    <BrowserRouter>
-      <Navbar />
-      {children}
-    </BrowserRouter>
-  </div>
-);
+  useEffect(() => {
+    getGeckos();
+    setInterval(() => {
+      getGeckos();
+    }, 20000);
+  }, []);
+  return (
+    <>
+      <BrowserRouter>
+        <Navbar />
+        {children}
+      </BrowserRouter>
+    </>
+  );
+};
 
-export default MainTemplate;
+export default connect(null, { getGeckos })(MainTemplate);

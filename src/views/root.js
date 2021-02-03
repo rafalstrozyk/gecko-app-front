@@ -3,14 +3,18 @@ import Home from 'views/home';
 import List from 'views/list';
 import Galery from 'views/galery';
 import Eating from 'views/eating';
+import Gecko from 'views/gecko';
 
 const Root = () => (
   <Switch>
     <Route exact path="/">
       <Home />
     </Route>
-    <Route path="/list">
+    <Route exact path="/list">
       <List />
+    </Route>
+    <Route path="/list/:id">
+      <Gecko />
     </Route>
     <Route path="/galery">
       <Galery />
@@ -20,6 +24,5 @@ const Root = () => (
     </Route>
   </Switch>
 );
-
 
 export default Root;
