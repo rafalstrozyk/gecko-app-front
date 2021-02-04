@@ -1,7 +1,8 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 
-import geckosReducer from 'redux/reducers/gecko';
+import geckosReducer from 'redux/reducers/geckoReducer';
+import uiReducer from 'redux/reducers/uiReducers';
 
 const initialState = {};
 
@@ -9,6 +10,7 @@ const middleware = [thunk];
 
 const stateTree = combineReducers({
   geckos: geckosReducer,
+  ui: uiReducer,
 });
 
 const store = createStore(

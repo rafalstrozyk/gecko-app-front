@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { format } from 'date-fns';
-import { getGecko } from 'redux/actions/gecko';
+import { getGecko } from 'redux/actions/geckoActions';
 
 const StyledListItem = styled.div`
   .flexbox {
@@ -43,7 +43,7 @@ const ListItem = ({ data, style, getGecko }) => {
           Eating: {data.eating ? format(new Date(data.eating), 'yyyy-MM-dd') : '-'}
         </Typography>
         <Button color="primary" onClick={handleClick}>
-          Settings
+          Details
         </Button>
       </Paper>
     </StyledListItem>

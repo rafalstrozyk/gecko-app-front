@@ -1,7 +1,23 @@
-const Home = () => (
-  <div>
-    <h1>Home</h1>
-  </div>
-);
+import { connect } from 'react-redux';
+import { setAfterTemplateIsOpen } from 'redux/actions/uiActions';
 
-export default Home;
+const Home = ({ templateIsOpen, setAfterTemplateIsOpen }) => {
+  function handleAfterTemplateIsOpen() {
+    setAfterTemplateIsOpen(!templateIsOpen);
+  }
+
+  return (
+    <div>
+      <h1>Home</h1>
+      <button onClick={handleAfterTemplateIsOpen} >Open after template</button>
+    </div>
+  );
+};
+
+const mapStateToProps = (state) => {
+  return {
+    templateIsOpen: state.ui.afterTemplateOpen,
+  };
+};
+
+export default connect(mapStateToProps, { setAfterTemplateIsOpen })(Home);
