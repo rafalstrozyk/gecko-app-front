@@ -1,7 +1,7 @@
 import { AFTER_TEMPLATE_IS_OPEN } from 'redux/types';
 
 const initialState = {
-  afterTemplateOpen: true,
+  afterTemplateOpen: false,
 };
 
 export default function reducer(state = initialState, action) {

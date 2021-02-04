@@ -1,8 +1,9 @@
 import React, { useRef } from 'react';
 import { List, AutoSizer, CellMeasurer, CellMeasurerCache } from 'react-virtualized';
 import ListItem from 'components/lists/listItem';
+import EatingListItem from 'components/lists/eatingListItem';
 
-const CustomList = ({ width, height, data }) => {
+const CustomList = ({ width, height, data, itemType }) => {
   const cache = useRef(
     new CellMeasurerCache({
       fixedWidth: true,
@@ -32,9 +33,8 @@ const CustomList = ({ width, height, data }) => {
                     columnIndex={0}
                     rowIndex={index}
                   >
-                    
-                      <ListItem style={style} data={item} />
-                    
+                    {!itemType && <ListItem style={style} data={item} />}
+                    {itemType === 'eating' ? <EatingListItem style={style} data={item} /> : null}
                   </CellMeasurer>
                 );
               }}

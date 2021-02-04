@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_GECKO, SET_GECKOS, ADD_GECKO } from 'redux/types';
+import { GET_GECKO, SET_GECKOS, ADD_GECKO, ADD_EATING_LIST } from 'redux/types';
 
 axios.defaults.baseURL = 'http://localhost:3000/';
 
@@ -37,4 +37,8 @@ export const addGecko = (data) => (dispatch) => {
         .catch((err) => console.log(err));
     })
     .catch((err) => console.log(err));
+};
+
+export const addToEatingArray = (id) => (dispatch) => {
+  dispatch({ type: ADD_EATING_LIST, payload: id });
 };
