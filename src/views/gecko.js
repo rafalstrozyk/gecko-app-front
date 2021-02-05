@@ -8,7 +8,6 @@ const Gecko = ({ gecko }) => {
   return (
     <div>
       <h1>Gecko Site</h1>
-      {console.log(gecko.name)}
       <p>{id}</p>
     </div>
   );

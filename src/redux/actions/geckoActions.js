@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { GET_GECKO, SET_GECKOS, ADD_GECKO, ADD_EATING_LIST } from 'redux/types';
+import { format } from 'date-fns';
+import { GET_GECKO, SET_GECKOS, ADD_GECKO, ADD_EATING_LIST, POST_EATING_LIST } from 'redux/types';
 
 axios.defaults.baseURL = 'http://localhost:3000/';
 
@@ -7,7 +8,6 @@ export const getGeckos = () => (dispatch) => {
   axios
     .get('/gecko')
     .then((res) => {
-      console.log(res);
       dispatch({ type: SET_GECKOS, payload: res.data });
     })
     .catch((err) => {
@@ -41,4 +41,20 @@ export const addGecko = (data) => (dispatch) => {
 
 export const addToEatingArray = (id) => (dispatch) => {
   dispatch({ type: ADD_EATING_LIST, payload: id });
+};
+
+export const postEating = (data) => (dispatch) => {
+  dispatch({ type: POST_EATING_LIST });
+  const newEatingData = {
+    date_eating: data.eatingDate,
+    eat_type: data.eatType,
+    geckos_id: data.geckos,
+  };
+  console.log(newEatingData);
+  axios
+    .post('/eating', newEatingData)
+    .then((res) => {
+      console.log(res.data);
+    })
+    .catch((err) => console.log(err));
 };

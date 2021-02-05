@@ -2,11 +2,12 @@ import { useEffect } from 'react';
 import TextField from '@material-ui/core/TextField';
 import { connect } from 'react-redux';
 import { useFormik } from 'formik';
-import { isDate } from 'date-fns';
+import { isDate, format } from 'date-fns';
 import styled from 'styled-components';
 import DateFnsUtils from '@date-io/date-fns';
 import { KeyboardDatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
 import List from 'components/lists/list';
+import { postEating } from 'redux/actions/geckoActions';
 
 const StyledAddEating = styled.div`
   width: 100%;
@@ -40,7 +41,7 @@ const validate = (values) => {
   if (!values.eatingDate) {
     errors.eatingDate = 'Required';
     errors.eatingDateErr = true;
-    if (isDate(Date.parse(values.eatingDate))) {
+    if (!isDate(values.eatingDate)) {
       errors.eatingDate = 'Must be Date format';
       errors.eatingDateErr = true;
     }
@@ -48,7 +49,7 @@ const validate = (values) => {
   return errors;
 };
 
-const AddEatingForm = ({ data, eatingList }) => {
+const AddEatingForm = ({ data, eatingList, postEating }) => {
   const formik = useFormik({
     initialValues: {
       eatType: '',
@@ -57,7 +58,8 @@ const AddEatingForm = ({ data, eatingList }) => {
     },
     validate,
     onSubmit: (values) => {
-      console.log(values);
+      values.eatingDate = format(values.eatingDate, 'dd/MM/yyyy');
+      postEating(values);
     },
   });
 
@@ -117,4 +119,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(AddEatingForm);
+export default connect(mapStateToProps, { postEating })(AddEatingForm);
