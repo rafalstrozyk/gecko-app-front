@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import {useLocation} from 'react-router-dom'
 import { connect } from 'react-redux';
 import { setAfterTemplateIsOpen } from 'redux/actions/uiActions';
+import AddGeckoForm from 'components/forms/addGecko';
+import AddEatingForm from 'components/forms/addEating';
 
 const StyledAfterTemplate = styled.div`
   position: fixed;
@@ -20,8 +23,9 @@ const StyledAfterTemplate = styled.div`
   }
 `;
 
-const AfterTemplate = ({ children, setAfterTemplateIsOpen, templateIsOpen }) => {
+const AfterTemplate = ({  setAfterTemplateIsOpen, templateIsOpen }) => {
   const [isOpen, setIsOpen] = useState(templateIsOpen);
+  const location = useLocation();
 
   useEffect(() => {
     setIsOpen(templateIsOpen);
@@ -37,7 +41,8 @@ const AfterTemplate = ({ children, setAfterTemplateIsOpen, templateIsOpen }) => 
         <StyledAfterTemplate >
           <div className="content">
             <button onClick={handleIsOpen}>X</button>
-            {children}
+            {location.pathname ==='/' && <AddGeckoForm />}
+            {location.pathname ==='/eating' && <AddEatingForm />}
           </div>
         </StyledAfterTemplate>
       ) : null}

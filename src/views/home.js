@@ -1,23 +1,12 @@
-import { connect } from 'react-redux';
-import { setAfterTemplateIsOpen } from 'redux/actions/uiActions';
+import ButtonAfterTemplate from 'components/Buttons/AfterButtonHandler';
 
-const Home = ({ templateIsOpen, setAfterTemplateIsOpen }) => {
-  function handleAfterTemplateIsOpen() {
-    setAfterTemplateIsOpen(!templateIsOpen);
-  }
-
+const Home = () => {
   return (
     <div>
       <h1>Home</h1>
-      <button onClick={handleAfterTemplateIsOpen} >Open after template</button>
+      <ButtonAfterTemplate>Open new gecko form</ButtonAfterTemplate>
     </div>
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    templateIsOpen: state.ui.afterTemplateOpen,
-  };
-};
-
-export default connect(mapStateToProps, { setAfterTemplateIsOpen })(Home);
+export default Home;

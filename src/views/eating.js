@@ -1,10 +1,9 @@
-import AddEating from 'components/forms/addEating';
+import ButtonAfterTemplate from 'components/Buttons/AfterButtonHandler';
 
 const Eating = () => {
-
   return (
     <div>
-      <AddEating />
+      <ButtonAfterTemplate>Add new eating</ButtonAfterTemplate>
     </div>
   );
 };
