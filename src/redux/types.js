@@ -3,6 +3,7 @@ export const GET_GECKO = 'GET_GECKO';
 export const ADD_GECKO = 'ADD_GECKO';
 export const ADD_EATING_LIST = 'ADD_EATING_LIST';
 export const POST_EATING_LIST = 'POST_EATING_LIST';
+export const GET_EATING_LIST = 'GET_EATING_LIST';
 
 // UI
 export const AFTER_TEMPLATE_IS_OPEN = 'AFTER_TEMPLATE_IS_OPEN';

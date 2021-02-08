@@ -1,21 +1,24 @@
 import { format } from 'date-fns';
 import axios from 'axios';
-import { GET_GECKO, SET_GECKOS, ADD_GECKO, ADD_EATING_LIST, POST_EATING_LIST } from 'redux/types';
+import {
+  GET_GECKO,
+  SET_GECKOS,
+  ADD_GECKO,
+  ADD_EATING_LIST,
+  POST_EATING_LIST,
+  GET_EATING_LIST,
+} from 'redux/types';
+import { convertDateObject } from 'functions/functions';
 
 axios.defaults.baseURL = 'http://localhost:3000/';
 
-const objectDateArr = ['birth_date', 'buy_date', 'eating'];
+const objectDateArr = ['birth_date', 'buy_date', 'eating', 'date_eating'];
 
 export const getGeckos = () => (dispatch) => {
   axios
     .get('/gecko')
     .then((res) => {
-      for (const item of res.data) {
-        objectDateArr.forEach((key) => {
-          item[key] = item[key] ? format(new Date(item[key]), 'dd/MM/yyyy') : '';
-        });
-      }
-      dispatch({ type: SET_GECKOS, payload: res.data });
+      dispatch({ type: SET_GECKOS, payload: convertDateObject(res.data, objectDateArr) });
     })
     .catch((err) => {
       console.log(err);
@@ -64,4 +67,10 @@ export const postEating = (data) => (dispatch) => {
       console.log(res.data);
     })
     .catch((err) => console.log(err));
+};
+
+export const getEating = () => (dispatch) => {
+  axios.get('/eating').then((res) => {
+    dispatch({ type: GET_EATING_LIST, payload: convertDateObject(res.data, objectDateArr) });
+  });
 };

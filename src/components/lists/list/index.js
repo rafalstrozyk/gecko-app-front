@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { List, AutoSizer, CellMeasurer, CellMeasurerCache } from 'react-virtualized';
 import ListItem from 'components/lists/listItem';
 import EatingListItem from 'components/lists/eatingListItem';
+import EatingListItemTwo from 'components/lists/eatingListItemTwo';
 
 const CustomList = ({ width, height, data, itemType }) => {
   const cache = useRef(
@@ -35,6 +36,7 @@ const CustomList = ({ width, height, data, itemType }) => {
                   >
                     {!itemType && <ListItem style={style} data={item} />}
                     {itemType === 'eating' ? <EatingListItem style={style} data={item} /> : null}
+                    {itemType === 'eating-list' ? <EatingListItemTwo style={style} data={item} /> : null}
                   </CellMeasurer>
                 );
               }}

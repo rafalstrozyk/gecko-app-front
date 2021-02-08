@@ -115,7 +115,7 @@ const AddEatingForm = ({ data, eatingList, postEating }) => {
 const mapStateToProps = (state) => {
   return {
     data: state.geckos.data,
-    eatingList: state.geckos.eating_list,
+    eatingList: state.geckos.geckos_id_eating_list,
   };
 };
 

@@ -18,7 +18,7 @@ const StyledListItem = styled.div`
       margin-left: 20px;
     }
     & > *:last-child {
-      margin-left: 20px;
+      margin-right: 20px;
     }
   }
   & :hover {
@@ -52,7 +52,7 @@ const ListItem = ({ data, style, addToEatingArray, eatingList }) => {
 
 const mapStateToProps = (state) => {
   return {
-    eatingList: state.geckos.eating_list,
+    eatingList: state.geckos.geckos_id_eating_list,
   };
 };
 

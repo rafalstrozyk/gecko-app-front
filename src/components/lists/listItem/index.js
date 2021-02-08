@@ -16,7 +16,7 @@ const StyledListItem = styled.div`
       margin-left: 20px;
     }
     & > *:last-child {
-      margin-left: 20px;
+      margin-right: 20px;
     }
   }
   & :hover {
@@ -38,9 +38,7 @@ const ListItem = ({ data, style, getGecko }) => {
         <Typography variant="body2">id: {data._id ? data._id : '-'}</Typography>
         <Typography variant="body2">Name: {data.name ? data.name : '-'}</Typography>
         <Typography variant="body2">Weight: {data.weight ? data.weight : '-'}</Typography>
-        <Typography variant="body2">
-          Eating: {data.eating ? data.eating : '-'}
-        </Typography>
+        <Typography variant="body2">Eating: {data.eating ? data.eating : '-'}</Typography>
         <Button color="primary" onClick={handleClick}>
           Details
         </Button>

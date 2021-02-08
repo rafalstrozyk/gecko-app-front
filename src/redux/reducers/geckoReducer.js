@@ -1,9 +1,10 @@
-import { SET_GECKOS, GET_GECKO, ADD_GECKO, ADD_EATING_LIST } from 'redux/types';
+import { SET_GECKOS, GET_GECKO, ADD_GECKO, ADD_EATING_LIST, GET_EATING_LIST } from 'redux/types';
 import { findById, addOrFindAndRemove } from 'functions/functions';
 
 const initialState = {
   data: [],
   gecko: null,
+  geckos_id_eating_list: [],
   eating_list: [],
 };
 
@@ -27,7 +28,12 @@ export default function reducer(state = initialState, action) {
     case ADD_EATING_LIST:
       return {
         ...state,
-        eating_list: addOrFindAndRemove(state.eating_list, action.payload),
+        geckos_id_eating_list: addOrFindAndRemove(state.geckos_id_eating_list, action.payload),
+      };
+    case GET_EATING_LIST:
+      return {
+        ...state,
+        eating_list: action.payload,
       };
     default:
       return state;

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { BrowserRouter } from 'react-router-dom';
 import Navbar from 'components/navbar';
 import { connect } from 'react-redux';
-import { getGeckos } from 'redux/actions/geckoActions';
+import { getGeckos, getEating } from 'redux/actions/geckoActions';
 import AfterTemplate from 'template/afterTemplat';
 
 const StyledContainer = styled.div`
@@ -14,13 +14,15 @@ const StyledContainer = styled.div`
   margin: 0 auto;
 `;
 
-const MainTemplate = ({ children, getGeckos }) => {
+const MainTemplate = ({ children, getGeckos, getEating }) => {
   useEffect(() => {
     getGeckos();
+    getEating();
     setInterval(() => {
       getGeckos();
+      getEating();
     }, 50000);
-  }, [getGeckos]);
+  }, [getGeckos, getEating]);
 
   return (
     <>
@@ -33,4 +35,4 @@ const MainTemplate = ({ children, getGeckos }) => {
   );
 };
 
-export default connect(null, { getGeckos })(MainTemplate);
+export default connect(null, { getGeckos, getEating })(MainTemplate);
