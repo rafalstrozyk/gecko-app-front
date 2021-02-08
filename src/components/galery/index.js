@@ -5,7 +5,7 @@ import FullScrin from 'components/images/fullScrin';
 import GaleryItem from 'components/images/galeryItem';
 
 const StyledGalery = styled.div`
-  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   .title {
     margin-bottom: 20px;

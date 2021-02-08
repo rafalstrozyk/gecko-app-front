@@ -1,13 +1,20 @@
-import axios from 'axios';
 import { format } from 'date-fns';
+import axios from 'axios';
 import { GET_GECKO, SET_GECKOS, ADD_GECKO, ADD_EATING_LIST, POST_EATING_LIST } from 'redux/types';
 
 axios.defaults.baseURL = 'http://localhost:3000/';
+
+const objectDateArr = ['birth_date', 'buy_date', 'eating'];
 
 export const getGeckos = () => (dispatch) => {
   axios
     .get('/gecko')
     .then((res) => {
+      for (const item of res.data) {
+        objectDateArr.forEach((key) => {
+          item[key] = item[key] ? format(new Date(item[key]), 'dd/MM/yyyy') : '';
+        });
+      }
       dispatch({ type: SET_GECKOS, payload: res.data });
     })
     .catch((err) => {

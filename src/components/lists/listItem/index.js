@@ -2,7 +2,6 @@ import { Typography, Button, Paper } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { format } from 'date-fns';
 import { getGecko } from 'redux/actions/geckoActions';
 
 const StyledListItem = styled.div`
@@ -40,7 +39,7 @@ const ListItem = ({ data, style, getGecko }) => {
         <Typography variant="body2">Name: {data.name ? data.name : '-'}</Typography>
         <Typography variant="body2">Weight: {data.weight ? data.weight : '-'}</Typography>
         <Typography variant="body2">
-          Eating: {data.eating ? format(new Date(data.eating), 'yyyy-MM-dd') : '-'}
+          Eating: {data.eating ? data.eating : '-'}
         </Typography>
         <Button color="primary" onClick={handleClick}>
           Details

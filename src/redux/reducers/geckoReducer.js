@@ -1,9 +1,8 @@
-import { data } from 'data/data';
 import { SET_GECKOS, GET_GECKO, ADD_GECKO, ADD_EATING_LIST } from 'redux/types';
 import { findById, addOrFindAndRemove } from 'functions/functions';
 
 const initialState = {
-  data: data.data,
+  data: [],
   gecko: null,
   eating_list: [],
 };
